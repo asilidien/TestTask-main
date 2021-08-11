@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Asilidien\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Asilidien\\.nuget\\packages"
+    ]
+  }
+}
