@@ -8,7 +8,6 @@ namespace TestTask.Controllers
 {
     public class NumberController : Controller
     {
-        //public static List<Models.Extra> Extras = new List<Models.Extra>();
 
         public ActionResult Index()
         {
@@ -24,7 +23,7 @@ namespace TestTask.Controllers
         public List<Models.Extra> GetList()
         {
             List<Models.Extra> extra = new List<Models.Extra>();
-            return (extra);
+            return extra;
         }
         public ActionResult Result(List<int> Ids)
         {
@@ -64,36 +63,45 @@ namespace TestTask.Controllers
         [HttpPost]
        public ActionResult Check (int number)
        {
-            List<int> inputed = new List<int>();
-            inputed = JsonSerializer.Deserialize<List<int>>(HttpContext.Session.GetString("inputed"));
-            inputed.Add(number);
-            HttpContext.Session.SetString("inputed", JsonSerializer.Serialize(inputed));
-
-            List<Models.Extra> Extras = GetList();
-            Extras = JsonSerializer.Deserialize<List<Models.Extra>>(HttpContext.Session.GetString("extras"));
-            List<int> Ids = new List<int>();
-            for (int i = 0; i < Extras.Count; i++)
+            if ((number < 101) & (number>9))
             {
-                Extras[i].History.Add(Extras[i].Number);
-                if (Extras[i].Number == number)
+                List<int> inputed = new List<int>();
+                inputed = JsonSerializer.Deserialize<List<int>>(HttpContext.Session.GetString("inputed"));
+                inputed.Add(number);
+                HttpContext.Session.SetString("inputed", JsonSerializer.Serialize(inputed));
+
+                List<Models.Extra> Extras = GetList();
+                Extras = JsonSerializer.Deserialize<List<Models.Extra>>(HttpContext.Session.GetString("extras"));
+                List<int> Ids = new List<int>();
+                for (int i = 0; i < Extras.Count; i++)
                 {
-                    if (Extras[i].Accuracy < 10)
+                    Extras[i].History.Add(Extras[i].Number);
+                    if (Extras[i].Number == number)
                     {
-                        Extras[i].Accuracy += 1;
+                        if (Extras[i].Accuracy < 10)
+                        {
+                            Extras[i].Accuracy += 1;
+                        }
+                        Ids.Add(Extras[i].Id);
                     }
-                    Ids.Add(Extras[i].Id);
-                }
-                else
-                {
-                    if (Extras[i].Accuracy>0)
+                    else
                     {
-                        Extras[i].Accuracy -= 1;
+                        if (Extras[i].Accuracy > 0)
+                        {
+                            Extras[i].Accuracy -= 1;
+                        }
+
                     }
-                    
                 }
+                HttpContext.Session.SetString("extras", JsonSerializer.Serialize(Extras));
+                return RedirectToAction("Result", "Number", new { Ids });
             }
-            HttpContext.Session.SetString("extras", JsonSerializer.Serialize(Extras));
-            return RedirectToAction ("Result", "Number", new { Ids } );
+            else
+            {
+                return RedirectToAction("get", "Number");
+            }
+ 
+            
        }
         public IActionResult addExtra()
         {
