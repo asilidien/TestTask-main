@@ -35,7 +35,6 @@ C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTa
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.RazorCoreGenerate.cache
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\Razor\Views\Number\Get.cshtml.g.cs
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\Razor\Views\Number\Result.cshtml.g.cs
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -49,3 +48,5 @@ C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTa
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.dll
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.pdb
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.genruntimeconfig.cache
+C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\Razor\Views\Number\GetNumberFromServer.cshtml.g.cs
+C:\Users\Asilidien\Desktop\TestTask-main\TestTask\bin\Debug\netcoreapp3.1\libman.json

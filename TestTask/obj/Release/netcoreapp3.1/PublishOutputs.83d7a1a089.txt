@@ -37,6 +37,7 @@ C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubT
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubTmp\Out\libman.json
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubTmp\Out\TestTask.dll
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubTmp\Out\TestTask.deps.json
 C:\Users\Asilidien\Desktop\TestTask-main\TestTask\obj\Release\netcoreapp3.1\PubTmp\Out\TestTask.runtimeconfig.json

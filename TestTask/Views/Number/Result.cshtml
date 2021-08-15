@@ -1,16 +1,16 @@
-﻿<H1>Задействованные экстрасенсы:</H1>
+﻿@{ ViewData["Title"] = Model.Title; }
+<H1>Задействованные экстрасенсы:</H1>
 <ul>
-    @for (int i = 0; i < Model.Count; i++)
+    @for (int i = 0; i < Model.Extras.Count; i++)
     {
-        <li>
-            @Model[i].Id Коэффициент достоверности: @Model[i].Accuracy. История предсказаний: @for (int j = 0; j < Model[i].History.Count; j++)
-            {@Model[i].History[j]<a>, </a>}
-        </li>
-    }
+<li>
+    @Model.Extras[i].Id Коэффициент достоверности: @Model.Extras[i].Accuracy. История предсказаний: @for (int j = 0; j < Model.Extras[i].History.Count; j++)
+    {@Model.Extras[i].History[j]<a>, </a>}
+</li>}
 </ul>
-    <h1>@ViewData["Message"]</h1>
-    <h2>Еще разок?</h2>
+<h1>@Model.Message</h1>
+<h2>Еще разок?</h2>
 
-    <form method="get">
-        <button asp-controller="Number" asp-action="get">Я загадал</button>
-    </form>
+<form method="get">
+    <button asp-controller="Number" asp-action="GetNumberFromServer">Я загадал</button>
+</form>

@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = Model.Title;
+}
+
+<H1>Задействованные экстрасенсы:</H1>
+<ul>
+    @for (int i = 0; i < Model.Extras.Count; i++)
+    {
+        <li>@Model.Extras[i].Id Коэффициент достоверности: @Model.Extras[i].Accuracy. История предсказаний: @for (int j = 0; j < Model.Extras[i].History.Count; j++)
+        {@Model.Extras[i].History[j]<a>, </a>}</li>
+    }
+</ul>
+<form method="post">
+    <button asp-controller="Number" asp-action="addExtra">Добавить экстрасенса</button>
+</form>
+<ul>
+    История загаданных чисел:
+    <li>
+        @for (int g = 0; g < Model.Inputed.Count; g++)
+        {@Model.Inputed[g]<a>, </a>}
+    </li>
+</ul>
+    <h1>Что говорят экстрасенсы:</h1>
+    @for (int i = 0; i < Model.Extras.Count; i++)
+    {
+        <h4>Экстрасенс № @Model.Extras[i].Id считает, что вы загадали число @Model.Extras[i].Number</h4>
+    }
+<h4>Я загадал число:</h4>
+    <form action="Check" method="post">
+        <input id="number" name="number" type="text" />
+        <input type="submit" />
+    </form>

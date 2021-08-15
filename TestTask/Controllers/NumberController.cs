@@ -11,20 +11,43 @@ namespace TestTask.Controllers
 
         public ActionResult Index()
         {
-            List<Models.Extra> Extras = GetList();
-            HttpContext.Session.SetString("extras", JsonSerializer.Serialize(Extras));
-            HttpContext.Session.SetString("inputed", JsonSerializer.Serialize(new List<int>()));
+            List<Models.Extra> Extras = GetListOfExtras();        
             for (int i = 0; i < 2; i++)
             {
-                addExtra();
+               Extras=Models.Extra.AddExtra(Extras);
             }
-            return RedirectToAction("get", "Number");
+            AddExtraToSession(Extras);
+            AddInputedToSession(new List<int>());
+            return RedirectToAction("GetNumberFromServer", "Number");
         }
-        public List<Models.Extra> GetList()
+        //.......................................................................................
+        public void AddExtraToSession(List<Models.Extra> Extras)
+        {
+            HttpContext.Session.SetString("extras", JsonSerializer.Serialize(Extras));
+        }
+        public List<Models.Extra> GetExtraFromSession()
+        {
+            List<Models.Extra> Extras = GetListOfExtras();
+            Extras = JsonSerializer.Deserialize<List<Models.Extra>>(HttpContext.Session.GetString("extras"));
+            return Extras;
+        }
+        public List<int> GetInputedFromSession()
+        {
+            List<int> inputed = new List<int>();
+            inputed = JsonSerializer.Deserialize<List<int>>(HttpContext.Session.GetString("inputed"));
+            return inputed;
+        }
+        public void AddInputedToSession (List<int> inputed)
+        {
+            HttpContext.Session.SetString("inputed", JsonSerializer.Serialize(inputed));
+        }
+        public List<Models.Extra> GetListOfExtras()
         {
             List<Models.Extra> extra = new List<Models.Extra>();
             return extra;
         }
+        //..........................................................................................
+
         public ActionResult Result(List<int> Ids)
         {
             string str = "Вам удалось обмануть наших экстрасенсов: никто из них не угадал ваше число";
@@ -37,26 +60,22 @@ namespace TestTask.Controllers
                 }
                 
             }
-            List<Models.Extra> Extras = GetList();
-            Extras = JsonSerializer.Deserialize<List<Models.Extra>>(HttpContext.Session.GetString("extras"));
+            List<Models.Extra> Extras = GetListOfExtras();
+            Extras = GetExtraFromSession();
             ViewData["Message"] = str;
-            return View(Extras);
+            Models.DataForViews data = Models.DataForViews.createDataForViews("Результат", null, str, Extras);
+            return View(data);
         }
+
         
         [HttpGet]
-        public IActionResult get() 
+        public IActionResult GetNumberFromServer() 
         {
-
-            List<Models.Extra> Extras = GetList();
-            Extras = JsonSerializer.Deserialize<List<Models.Extra>>(HttpContext.Session.GetString("extras"));
-            Random rnd = new Random();
-                for (int i = 0; i < Extras.Count; i++)
-                {
-                Extras[i].Number = rnd.Next(10, 100);
-                }
-            HttpContext.Session.SetString("extras", JsonSerializer.Serialize(Extras));
-            ViewBag.inputed = JsonSerializer.Deserialize<List<int>>(HttpContext.Session.GetString("inputed"));
-            return View(Extras);
+            List<Models.Extra> Extras = GetExtraFromSession();
+            Extras = Models.Extra.SetNumberFromServer(Extras);
+            AddExtraToSession(Extras);
+            Models.DataForViews data = Models.DataForViews.createDataForViews("Ответ", GetInputedFromSession(), "", Extras);
+            return View(data);
             
             
         }
@@ -66,12 +85,13 @@ namespace TestTask.Controllers
             if ((number < 101) & (number>9))
             {
                 List<int> inputed = new List<int>();
-                inputed = JsonSerializer.Deserialize<List<int>>(HttpContext.Session.GetString("inputed"));
+                inputed = GetInputedFromSession();
                 inputed.Add(number);
-                HttpContext.Session.SetString("inputed", JsonSerializer.Serialize(inputed));
+                AddInputedToSession(inputed);
 
-                List<Models.Extra> Extras = GetList();
-                Extras = JsonSerializer.Deserialize<List<Models.Extra>>(HttpContext.Session.GetString("extras"));
+                List<Models.Extra> Extras = GetListOfExtras();
+                Extras = GetExtraFromSession();
+
                 List<int> Ids = new List<int>();
                 for (int i = 0; i < Extras.Count; i++)
                 {
@@ -93,26 +113,26 @@ namespace TestTask.Controllers
 
                     }
                 }
-                HttpContext.Session.SetString("extras", JsonSerializer.Serialize(Extras));
+                AddExtraToSession(Extras);
                 return RedirectToAction("Result", "Number", new { Ids });
             }
             else
             {
-                return RedirectToAction("get", "Number");
+                return RedirectToAction("GetNumberFromServer", "Number");
             }
  
             
        }
         public IActionResult addExtra()
         {
-            List<Models.Extra> Extras = GetList();
+            List<Models.Extra> Extras = GetListOfExtras();
 
-            Extras = JsonSerializer.Deserialize<List<Models.Extra>>(HttpContext.Session.GetString("extras"));
+            Extras = GetExtraFromSession();
 
-            Extras.Add(new Models.Extra { Id = Extras.Count, Number = 0, Accuracy = 0, History = new List<int>() });
-            HttpContext.Session.SetString("extras", JsonSerializer.Serialize(Extras));
+            Extras = Models.Extra.AddExtra(Extras);
+            AddExtraToSession(Extras);
 
-            return RedirectToAction("get", "Number");
+            return RedirectToAction("GetNumberFromServer", "Number");
         }
 
     }
