@@ -30,7 +30,7 @@ namespace TestTask
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.Cookie.Name = ".ExtraSession";
+                options.Cookie.Name = ".psychicsession";
                 options.IdleTimeout = TimeSpan.FromSeconds(3600);
                 options.Cookie.IsEssential = true;
             });
@@ -63,7 +63,7 @@ namespace TestTask
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Number}/{action=Index}/{id?}");
             });
         }
     }

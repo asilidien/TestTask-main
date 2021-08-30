@@ -1,11 +1,14 @@
-﻿@{ ViewData["Title"] = Model.Title; }
+﻿@{
+    Game Model = new Game();
+    ViewData["Title"] = "Результат"; 
+}
 <H1>Задействованные экстрасенсы:</H1>
 <ul>
-    @for (int i = 0; i < Model.Extras.Count; i++)
+    @for (int i = 0; i < Model.Psychics.Count; i++)
     {
 <li>
-    @Model.Extras[i].Id Коэффициент достоверности: @Model.Extras[i].Accuracy. История предсказаний: @for (int j = 0; j < Model.Extras[i].History.Count; j++)
-    {@Model.Extras[i].History[j]<a>, </a>}
+    @Model.Psychics[i].Id Коэффициент достоверности: @Model.Psychics[i].Accuracy. История предсказаний: @for (int j = 0; j < Model.Psychics[i].History.Count; j++)
+    {@Model.Psychics[i].History[j]<a>, </a>}
 </li>}
 </ul>
 <h1>@Model.Message</h1>
