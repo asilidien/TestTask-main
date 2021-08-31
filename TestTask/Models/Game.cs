@@ -10,7 +10,7 @@ namespace TestTask.Models
     {
         Psychic psychic = new Psychic();
         public List<Psychic> Psychics { get; private set; } = new List<Psychic>();
-        public List<int> Usernumbers { get; private set; }
+        public List<int> Usernumbers { get; private set; } = new List<int>();
 
         public static int MaxValue = 100;
         public static int MinValue = 10;
@@ -24,11 +24,15 @@ namespace TestTask.Models
                 Psychics.Add(psychic.AddPsychic(Psychics.Count));
             }
         }
+        public void AddPsychic()
+        {
+            Psychics.Add(psychic.AddPsychic(Psychics.Count));
+        }
         public void GetAnswerFromPsychics()
         {
             for (int i = 0; i < Psychics.Count; i++)
             {
-                Psychics[i].Number = Psychic.GetTheNumberFromPsychic(MinValue, MaxValue);
+                Psychics[i].SetNumber(Psychic.GetTheNumberFromPsychic(MinValue, MaxValue));
                 Psychics[i].History.Add(Psychics[i].Number);
             }
         }
@@ -41,7 +45,7 @@ namespace TestTask.Models
                 {
                     if (Psychics[i].Number == number)
                     {
-                        Psychics[i].Accuracy++;
+                        Psychics[i].ChangeAccuracy(true);
                         LuckyIds.Add(Psychics[i].Id);
                     }
 

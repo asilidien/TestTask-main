@@ -11,14 +11,13 @@ namespace TestTask.Models
     {
         public static void Save(this ISession session, Game game)
         {
-            string str = JsonSerializer.Serialize(game);
-            session.SetString("game", str);
-            
+            session.SetString("game", JsonSerializer.Serialize(game));
             return;
         }
         public static Game Load(this ISession session)
         {
-            return JsonSerializer.Deserialize<Game>(session.GetString("game"));
+
+            return JsonSerializer.Deserialize<Game>(session.GetString("game")); 
         }
     }
 }

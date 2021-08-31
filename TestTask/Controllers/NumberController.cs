@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using TestTask.Models;
 
 namespace TestTask.Controllers
@@ -9,6 +10,7 @@ namespace TestTask.Controllers
     {
         
         Game game = new Game();
+        
         public ActionResult Index()
         {
             return View();
@@ -31,7 +33,7 @@ namespace TestTask.Controllers
                 //TO DO
             }
             HttpContext.Session.Save(game);
-            return RedirectToAction("GetNumberFromServer", "Number");
+            return RedirectToAction("GetNumberFromServer");
         }
         public ActionResult Result()// rename
         {
@@ -42,6 +44,7 @@ namespace TestTask.Controllers
         [HttpGet]
         public IActionResult GetNumberFromServer()// rename
         {
+
             game = HttpContext.Session.Load();
             game.GetAnswerFromPsychics();
             HttpContext.Session.Save(game);
@@ -54,8 +57,13 @@ namespace TestTask.Controllers
         {
             game.CheckNumbers(number);
 
-            return RedirectToAction("Result", "Number");
+            return RedirectToAction("Result");
 
+        }
+        public ActionResult AddPsychic()
+        {
+            game.AddPsychic();
+            return RedirectToAction("GetNumberFromServer");
         }
     }
 }

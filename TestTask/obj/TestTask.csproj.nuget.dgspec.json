@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\TestTask-main\\TestTask\\TestTask.csproj": {}
+    "C:\\Users\\Asilidien\\Documents\\GitHub\\TestTask-main\\TestTask\\TestTask.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\TestTask-main\\TestTask\\TestTask.csproj": {
+    "C:\\Users\\Asilidien\\Documents\\GitHub\\TestTask-main\\TestTask\\TestTask.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\TestTask-main\\TestTask\\TestTask.csproj",
+        "projectUniqueName": "C:\\Users\\Asilidien\\Documents\\GitHub\\TestTask-main\\TestTask\\TestTask.csproj",
         "projectName": "TestTask",
-        "projectPath": "C:\\Users\\user\\source\\repos\\TestTask-main\\TestTask\\TestTask.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\TestTask-main\\TestTask\\obj\\",
+        "projectPath": "C:\\Users\\Asilidien\\Documents\\GitHub\\TestTask-main\\TestTask\\TestTask.csproj",
+        "packagesPath": "C:\\Users\\Asilidien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asilidien\\Documents\\GitHub\\TestTask-main\\TestTask\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Asilidien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
