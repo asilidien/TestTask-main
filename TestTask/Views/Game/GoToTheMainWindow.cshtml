@@ -1,5 +1,4 @@
 ﻿@{
-    Game Model = new Game();
     ViewData["Title"] = "Игра началась";
 }
 
@@ -12,7 +11,7 @@
     }
 </ul>
 <form method="post">
-    <button asp-controller="Number" asp-action="AddPsychic">Добавить экстрасенса</button>
+    <button asp-controller="Game" asp-action="AddPsychic">Добавить экстрасенса</button>
 </form>
 <ul>
     История загаданных чисел:

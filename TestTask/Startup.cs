@@ -63,7 +63,7 @@ namespace TestTask
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Number}/{action=Index}/{id?}");
+                    pattern: "{controller=Game}/{action=Index}/{id?}");
             });
         }
     }

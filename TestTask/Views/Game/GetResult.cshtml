@@ -1,5 +1,4 @@
 ﻿@{
-    Game Model = new Game();
     ViewData["Title"] = "Результат"; 
 }
 <H1>Задействованные экстрасенсы:</H1>
@@ -15,5 +14,5 @@
 <h2>Еще разок?</h2>
 
 <form method="get">
-    <button asp-controller="Number" asp-action="GetNumberFromServer">Я загадал</button>
+    <button asp-controller="Game" asp-action="GoToTheMainWindow">Я загадал</button>
 </form>

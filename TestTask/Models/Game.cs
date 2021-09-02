@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace TestTask.Models
 {
@@ -9,13 +8,17 @@ namespace TestTask.Models
     public class Game
     {
         Psychic psychic = new Psychic();
+        [JsonInclude]
         public List<Psychic> Psychics { get; private set; } = new List<Psychic>();
+        [JsonInclude]
         public List<int> Usernumbers { get; private set; } = new List<int>();
-
-        public static int MaxValue = 100;
-        public static int MinValue = 10;
-        public static int CountOfPsychics = 2;
+        [JsonInclude]
         public string Message { get; private set; }
+
+        readonly int MaxValue = 100;
+        readonly int MinValue = 10;
+        readonly int CountOfPsychics = 2;
+
 
         public void StartTheGame()
         {
@@ -36,8 +39,19 @@ namespace TestTask.Models
                 Psychics[i].History.Add(Psychics[i].Number);
             }
         }
+        public bool CheckIfValid(int number)
+        {
+            if ((number > MinValue) && (number < MaxValue))
+            {
+                return true;
+            }
+
+            return false;
+
+        }
         public void CheckNumbers(int number)
         {
+
             List<int> LuckyIds = new List<int>();
             if ((number > MinValue) && (number < MaxValue))
             {
@@ -54,6 +68,7 @@ namespace TestTask.Models
 
             }
             ReturnRoundResult(LuckyIds);
+
         }
         public void ReturnRoundResult(List<int> Luckyids)
         {
@@ -68,6 +83,6 @@ namespace TestTask.Models
 
             }
         }
-       
+
     }
 }

@@ -16,7 +16,8 @@ namespace TestTask.Models
         }
         public static Game Load(this ISession session)
         {
-
+            string sww = session.GetString("game");
+            Game game = JsonSerializer.Deserialize<Game>(sww);
             return JsonSerializer.Deserialize<Game>(session.GetString("game")); 
         }
     }
