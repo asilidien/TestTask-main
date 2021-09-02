@@ -7,21 +7,21 @@ namespace TestTask.Controllers
     public class GameController : Controller
     {
 
-        Models.Game game = new Models.Game();
+        Game game = new Game();
 
         public IActionResult Index()
         {
             return View();
         }
         public IActionResult Start()
-        {
-            if (!HttpContext.Session.Keys.Contains("game"))
-            {
-                HttpContext.Session.Save(game);
-            }
-            game = HttpContext.Session.Load();
+        {      
             try
             {
+                if (!HttpContext.Session.Keys.Contains("game"))
+                {
+                    HttpContext.Session.Save(game);
+                }
+                game = HttpContext.Session.Load();
                 game.StartTheGame();
                 HttpContext.Session.Save(game);
                 return RedirectToAction("GoToTheMainWindow");
@@ -52,7 +52,7 @@ namespace TestTask.Controllers
         public void GetNumberFromServer()
         {
             game = HttpContext.Session.Load();
-            game.GetAnswerFromPsychics();
+            game.AskPsychicsForAnswer();
             HttpContext.Session.Save(game);
         }
 
@@ -75,10 +75,10 @@ namespace TestTask.Controllers
         {
             try
             {
-                if (game.CheckIfValid(number))
+                if (game.Validate(number))
                 {
                     game = HttpContext.Session.Load();
-                    game.CheckNumbers(number);
+                    game.CheckNumber(number);
                     HttpContext.Session.Save(game);
                     return RedirectToAction("GetResult");
                 }

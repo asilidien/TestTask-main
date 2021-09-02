@@ -7,82 +7,70 @@ namespace TestTask.Models
     [Serializable]
     public class Game
     {
-        Psychic psychic = new Psychic();
         [JsonInclude]
         public List<Psychic> Psychics { get; private set; } = new List<Psychic>();
         [JsonInclude]
-        public List<int> Usernumbers { get; private set; } = new List<int>();
+        public List<int> UserNumbers { get; private set; } = new List<int>();
         [JsonInclude]
         public string Message { get; private set; }
 
-        readonly int MaxValue = 100;
-        readonly int MinValue = 10;
-        readonly int CountOfPsychics = 2;
+        const int MaxValue = 100;
+        const int MinValue = 10;
+        const int CountOfPsychics = 2;
 
 
         public void StartTheGame()
         {
             for (int i = 0; i < CountOfPsychics; i++)
             {
-                Psychics.Add(psychic.AddPsychic(Psychics.Count));
+                Psychics.Add(Psychic.GetPsychic(Psychics.Count));
             }
         }
         public void AddPsychic()
         {
-            Psychics.Add(psychic.AddPsychic(Psychics.Count));
+            Psychics.Add(Psychic.GetPsychic(Psychics.Count));
         }
-        public void GetAnswerFromPsychics()
+        public void AskPsychicsForAnswer()
         {
             for (int i = 0; i < Psychics.Count; i++)
             {
-                Psychics[i].SetNumber(Psychic.GetTheNumberFromPsychic(MinValue, MaxValue));
-                Psychics[i].History.Add(Psychics[i].Number);
+                Psychics[i].GuessTheNumber(MinValue, MaxValue);
             }
         }
-        public bool CheckIfValid(int number)
+        public bool Validate(int number)
         {
-            if ((number > MinValue) && (number < MaxValue))
-            {
-                return true;
-            }
-
-            return false;
-
+            return (number > MinValue) && (number < MaxValue);
         }
-        public void CheckNumbers(int number)
+        public void CheckNumber(int number)
         {
-
-            List<int> LuckyIds = new List<int>();
-            if ((number > MinValue) && (number < MaxValue))
+            List<int> luckyIds = new List<int>();
+            UserNumbers.Add(number);
+            for (int i = 0; i < Psychics.Count; i++)
             {
-                for (int i = 0; i < Psychics.Count; i++)
+                if (Psychics[i].Number == number)
                 {
-                    if (Psychics[i].Number == number)
-                    {
-                        Psychics[i].ChangeAccuracy(true);
-                        LuckyIds.Add(Psychics[i].Id);
-                    }
-
+                    Psychics[i].UpAccuracy();
+                    luckyIds.Add(Psychics[i].Id);
+                } 
+                else
+                {
+                    Psychics[i].DownAccuracy();
                 }
-                Usernumbers.Add(number);
-
             }
-            ReturnRoundResult(LuckyIds);
+            ReturnRoundResult(luckyIds);
 
         }
-        public void ReturnRoundResult(List<int> Luckyids)
+        public void ReturnRoundResult(List<int> luckyIds)
         {
             Message = "Вам удалось обмануть наших экстрасенсов: никто из них не угадал ваше число";
-            if (Luckyids.Count != 0)
+
+            if (luckyIds.Count == 0)
             {
-                Message = "Ваше число угадали экстрасенсы с номерами: ";
-                for (int i = 0; i < Luckyids.Count; i++)
-                {
-                    Message += Luckyids[i].ToString() + ", ";
-                }
-
+                return;
             }
-        }
 
+            Message = "Ваше число угадали экстрасенсы с номерами: ";
+            Message += string.Join(", ", luckyIds);
+        }
     }
 }

@@ -17,36 +17,28 @@ namespace TestTask.Models
         public List<int> History { get; private set; }
 
 
-        public static int GetTheNumberFromPsychic(int MinValue, int MaxValue)
+        public void GuessTheNumber(int minValue, int maxValue)
         {
             Random rnd = new Random();
-            return rnd.Next(MinValue, MaxValue);
+            Number = rnd.Next(minValue, maxValue);
+            History.Add(Number);
         }
-        public Psychic AddPsychic(int Id)
+        public static Psychic GetPsychic(int id)
         {
-            Psychic psychic = new Psychic() { Id = Id, Number = 0, Accuracy = 0, History = new List<int>() };
+            Psychic psychic = new Psychic() { Id = id, Number = 0, Accuracy = 0, History = new List<int>() };
             return psychic;
         }
-        public void SetNumber(int number)
+        public void UpAccuracy()
         {
-            Number = number;
+            Accuracy++;
         }
-        public void ChangeAccuracy(bool Direction)
+        public void DownAccuracy()
         {
-            if (Direction)
+            if (Accuracy > 0)
             {
-                Accuracy++;
-            }
-            else
-            {
-                if (Accuracy > 0)
-                {
-                    Accuracy--;
-                }
-
+                Accuracy--;
             }
         }
-
     }
 
 
