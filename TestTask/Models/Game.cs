@@ -14,7 +14,7 @@ namespace TestTask.Models
         [JsonInclude]
         public string Message { get; private set; }
 
-        const int MaxValue = 100;
+        const int MaxValue = 99;
         const int MinValue = 10;
         const int CountOfPsychics = 2;
 
@@ -39,12 +39,13 @@ namespace TestTask.Models
         }
         public bool Validate(int number)
         {
-            return (number > MinValue) && (number < MaxValue);
+            return (number >= MinValue) && (number <= MaxValue);
         }
         public void CheckNumber(int number)
         {
-            List<int> luckyIds = new List<int>();
             UserNumbers.Add(number);
+
+            List<int> luckyIds = new List<int>();            
             for (int i = 0; i < Psychics.Count; i++)
             {
                 if (Psychics[i].Number == number)
@@ -57,6 +58,7 @@ namespace TestTask.Models
                     Psychics[i].DownAccuracy();
                 }
             }
+
             ReturnRoundResult(luckyIds);
 
         }
