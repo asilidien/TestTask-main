@@ -16,9 +16,6 @@ namespace TestTask.Models
         [JsonInclude]
         public List<int> History { get; private set; } = new List<int>();
 
-
-        private Psychic() { }
-
         public void GuessTheNumber(int minValue, int maxValue)
         {
             Random rnd = new Random();

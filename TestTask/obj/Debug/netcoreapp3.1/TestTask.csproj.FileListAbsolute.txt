@@ -155,3 +155,13 @@ C:\Users\Asilidien\Documents\GitHub\TestTask-main\TestTask\obj\Debug\netcoreapp3
 C:\Users\Asilidien\Documents\GitHub\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.Views.pdb
 C:\Users\Asilidien\Documents\GitHub\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.csproj.CopyComplete
 C:\Users\Asilidien\Documents\GitHub\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.genruntimeconfig.cache
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.csproj.AssemblyReference.cache
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.AssemblyInfoInputs.cache
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.AssemblyInfo.cs
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.csproj.CoreCompileInputs.cache
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.RazorAssemblyInfo.cache
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.RazorAssemblyInfo.cs
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.dll
+C:\Users\sonin\source\repos\TestTask-main\TestTask\obj\Debug\netcoreapp3.1\TestTask.pdb
